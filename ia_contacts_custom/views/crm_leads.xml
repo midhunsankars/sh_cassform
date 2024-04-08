@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_lead_view_form_inherited" model="ir.ui.view">
+        <field name="name">crm.lead.view.form.crm</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="product_category" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group/div/field[@name='zip']" position="after">
+                <field name="post_code" placeholder="Post Code" options="{'no_create': True}"/>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group/field[@name='referred']" position="before">
+                <field name="is_postcode" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//page[@name='lead']/group/group/field[@name='source_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+
+            <xpath expr="//page[@name='lead']/group/group/field[@name='referred']" position="before">
+                <field name="is_referral"/>
+            </xpath>
+            <!-- To Fix
+            <xpath expr="//page[@name='lead']/group/group/field[@name='referred']" position="attributes">
+                <attribute name="invisible">"not is_referral"</attribute>
+                <attribute name="required">"is_referral = True"</attribute>
+            </xpath>-->
+            <xpath expr="//page[@name='lead']/group/group/div/field[@name='zip']" position="attributes">
+                <attribute name="readonly">"is_postcode = True"</attribute>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group/div/field[@name='zip']" position="attributes">
+                <attribute name="force_save">True</attribute>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group/div/field[@name='zip']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group/field[@name='team_id']" position="attributes">
+                <attribute name="followers">True</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="crm_kanban_view_inherited" model="ir.ui.view">
+        <field name="name">crm.lead.view.kanban.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="create">0</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

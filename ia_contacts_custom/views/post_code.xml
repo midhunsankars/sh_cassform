@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="post_code_master_tree" model="ir.ui.view">
+        <field name="name">post_code_master_tree</field>
+        <field name="model">post.code.master</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" required="1"/>
+                <field name="zone" required="1" options="{'no_create': True}"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_post_code_master" model="ir.actions.act_window">
+        <field name="name">Post Code Master</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">post.code.master</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_post_code_master"
+              action="action_post_code_master"
+              name="Post Code"
+              parent="crm.crm_menu_config"
+              sequence="30"/>
+    <menuitem id="menu_contacts_post_code_master"
+              action="action_post_code_master"
+              name="Post Code"
+              parent="contacts.menu_localisation"
+              sequence="30"/>
+
+
+</odoo>

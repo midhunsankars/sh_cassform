@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="zone_master_tree" model="ir.ui.view">
+        <field name="name">zone_master_tree</field>
+        <field name="model">zone.master</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" required="1"/>
+                <field name="sale_teams_id" required="1" options="{'no_create': True}"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_zone_master" model="ir.actions.act_window">
+        <field name="name">Zone Master</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">zone.master</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_zone_master"
+              action="action_zone_master"
+              name="Zone"
+              parent="crm.crm_menu_config"
+              sequence="28"/>
+    <menuitem id="menu_contacts_zone_master"
+              action="action_zone_master"
+              name="Zone"
+              parent="contacts.menu_localisation"
+              sequence="28"/>
+
+
+</odoo>

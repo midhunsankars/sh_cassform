@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="package_form_inherited" model="ir.ui.view">
+        <field name="name">product.packages.form.inherited</field>
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="stock.view_quant_package_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_id']" position="after">
+                <field name="is_cross_hire"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
